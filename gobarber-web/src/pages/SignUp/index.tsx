@@ -13,11 +13,11 @@ import Button from '../../components/Button';
 import { Container, Content, Background } from './styles';
 
 const SignUp: React.FC = () => {
-  const fromRef = useRef<FormHandles>(null);
+  const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(async (data: object) => {
     try {
-      fromRef.current?.setErrors({});
+      formRef.current?.setErrors({});
       const schema = Yup.object().shape({
         name: Yup.string().required('Nome obrigatório'),
         email: Yup.string()
@@ -32,7 +32,7 @@ const SignUp: React.FC = () => {
     } catch (err) {
       const erros = getValidationErros(err);
 
-      fromRef.current?.setErrors(erros);
+      formRef.current?.setErrors(erros);
     }
   }, []);
 
@@ -42,7 +42,7 @@ const SignUp: React.FC = () => {
       <Content>
         <img src={logoImg} alt="GoBarber" />
 
-        <Form ref={fromRef} onSubmit={handleSubmit}>
+        <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Faça seu cadastro</h1>
           <Input name="name" icon={FiUser} placeholder="Nome" />
           <Input name="email" icon={FiMail} placeholder="E-mail" />
