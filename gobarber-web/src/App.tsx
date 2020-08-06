@@ -5,8 +5,6 @@ import GlobalStyle from './styles/global';
 
 import Routes from './routes';
 
-import ToastContainer from './components/ToastContainer';
-
 import AppProvider from './hooks';
 
 const App: React.FC = () => (
